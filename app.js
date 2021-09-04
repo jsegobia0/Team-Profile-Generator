@@ -42,9 +42,9 @@ const teamMenbers = [];
 
 // function startApp(){};
 //      function createManager() {
-    // typ:
-    // name:
-    // message:
+    // typ:"input"
+    // name:"manager"
+    // message: "What is the Manager's name?"
     // validate:
 // }
 // .then(answers => {
