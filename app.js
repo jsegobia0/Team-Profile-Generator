@@ -40,7 +40,7 @@ const teamMenbers = [];
 
 
 
-// function startApp(){};
+// function startApp() {};
 //      function createManager() {
     // typ:"input"
     // name:"manager"
