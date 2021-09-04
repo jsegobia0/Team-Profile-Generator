@@ -55,10 +55,11 @@ const teamMenbers = [];
 
 // type list of options to call for team members
 
-// function buildTeam() {
-//     // create the output directory if the output path is not existing
-//     if (!fs.existsSync(OUTPUT_DIR)) {
-//         fs.mkdir(OUTPUT_DIR)
-//     }
-//     fs.writeFileSync(OUTPUT_DIR), render(teamMenbers, "utf-8")
-// }
+// build team () =>
+function buildTeam() {
+    // create the output directory if the output path is not existing
+    if (!fs.existsSync(OUTPUT_DIR)) {
+        fs.mkdir(OUTPUT_DIR)
+    }
+    fs.writeFileSync(OUTPUT_DIR), render(teamMenbers, "utf-8")
+}
