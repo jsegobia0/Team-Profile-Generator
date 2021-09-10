@@ -48,7 +48,7 @@ const teamMenbers = [];
     // typ:"input"
     // name:"manager"
     // message: "What is the Manager's name?"
-    // validate:
+
 // }
 // .then(answers => {
     // const manager = new Manager (answers.managerName ...)
