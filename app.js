@@ -10,7 +10,6 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 
 const render = require("./lib/htmlRenderer");
-const { type } = require("os");
 
 const teamMenbers = [];
 
@@ -46,7 +45,7 @@ const teamMenbers = [];
 // }
 function createManager() {
     const manager = new Manager();
-    const questions = {
+    let questions = {
         type: "input",
         name: "manager",
         message: "What is the name of your manager?"
