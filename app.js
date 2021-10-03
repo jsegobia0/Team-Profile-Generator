@@ -64,7 +64,7 @@ function createManager() {
         teamMembers.push(manager);
         console.log("Adding member to Team...");
     })
-}
+};
 createManager();
 
 // .then(answers => {
@@ -101,7 +101,7 @@ function createEngineer() {
         teamMembers.push(engineer);
         console.log("Adding member to Team...");
     })
-}
+};
 createEngineer();
 
 function createIntern() {
@@ -132,7 +132,7 @@ function createIntern() {
         teamMembers.push(intern);
         console.log("Adding member to Team...");
     })
-}
+};
 createIntern();
 
 function createEmployee() {
@@ -165,7 +165,7 @@ function createEmployee() {
             message: "What is the employee's ID?"
         },
     ])
-}
+};
 createEmployee();
 // type list of options to call for team members
 
@@ -176,7 +176,7 @@ function buildTeam() {
         fs.mkdir(OUTPUT_DIR)
     }
     console.log("Generating html...");
-    fs.writeFileSync(OUTPUT_DIR), render(teamMenbers, "utf-8")
+    fs.writeFileSync(outputPath), render(teamMenbers, "utf-8")
     console.log("Successfully generated team.html")
-}
+};
 buildTeam();
