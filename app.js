@@ -36,41 +36,36 @@ const teamMenbers = [];
 // object with the correct structure and methods. This structure will be crucial in order
 // for the provided `render` function to work! ```
 
-
-
-
-
-// function startApp() {
-    // 
-// }
 function createManager() {
-    const manager = new Manager();
-    let questions = {
-        type: "input",
-        name: "manager",
-        message: "What is the name of your manager?"
-    };
-
-
-
-    // test("Can set office number via constructor argument", () => {
-    //     const testValue = 100;
-    //     const e = new Manager("Foo", 1, "test@test.com", testValue);
-    //     expect(e.officeNumber).toBe(testValue);
-    //   });
-      
-    //   test('getRole() should return "Manager"', () => {
-    //     const testValue = "Manager";
-    //     const e = new Manager("Foo", 1, "test@test.com", 100);
-    //     expect(e.getRole()).toBe(testValue);
-    //   });
-      
-    //   test("Can get office number via getOffice()", () => {
-    //     const testValue = 100;
-    //     const e = new Manager("Foo", 1, "test@test.com", testValue);
-    //     expect(e.getOfficeNumber()).toBe(testValue);
-    //   });
+    return inquirer.prompt([
+        {
+            type: "input",
+            name: "name",
+            message: "What is the name of your manager?"
+        },
+        {
+            type: "input",
+            name: "id",
+            message: "What is the manager's ID?"
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "What is the manager's email?"
+        },
+        {
+            type: "input",
+            name: "officeNumber",
+            message: "What is the manager's office number?"
+        },
+    ])
+    .then (answer => {
+        const manager = new Manager (answer.name, answer.id, answer.email, answer.officeNumber);
+        teamMembers.push(manager);
+        console.log("Adding member to Team...");
+    })
 }
+createManager();
 
 // .then(answers => {
     // const manager = new Manager (answers.managerName,  ...)
@@ -79,17 +74,99 @@ function createManager() {
 // }
 
 function createEngineer() {
-    const engineer = new Engineer();
-
+    return inquirer.prompt([
+        {
+            type: "input",
+            name: "name",
+            message: "What is the name of your engineer?"
+        },
+        {
+            type: "input",
+            name: "id",
+            message: "What is the engineer's ID?"
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "What is the engineer's email?"
+        },
+        {
+            type: "input",
+            name: "github",
+            message: "What is the engineer's github username?"
+        },
+    ])
+    .then (answer => {
+        const engineer = new Engineer (answer.name, answer.id, answer.email, answer.github);
+        teamMembers.push(engineer);
+        console.log("Adding member to Team...");
+    })
 }
+createEngineer();
 
 function createIntern() {
-
+    return inquirer.prompt([
+        {
+            type: "input",
+            name: "name",
+            message: "What is the name of your intern?"
+        },
+        {
+            type: "input",
+            name: "id",
+            message: "What is the intern's ID?"
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "What is the intern's email?"
+        },
+        {
+            type: "input",
+            name: "school",
+            message: "What is the intern's school?"
+        },
+    ])
+    .then (answer => {
+        const intern = new Intern (answer.name, answer.id, answer.email, answer.school);
+        teamMembers.push(intern);
+        console.log("Adding member to Team...");
+    })
 }
+createIntern();
 
 function createEmployee() {
-
+    return inquirer.prompt([
+        {
+            type: 'confirm',
+            name: 'confirmAddEmployee',
+            message: 'Would you like to add more team members?',
+            default: false
+        },
+        {
+            type: "list",
+            name: "role",
+            message: "Choose another role...",
+            choices: ['Engineer', 'Intern']
+        },
+        {
+            type: "input",
+            name: "name",
+            message: "What is the employee's name?"
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "What is the employee's email?"
+        },
+        {
+            type: "input",
+            name: "id",
+            message: "What is the employee's ID?"
+        },
+    ])
 }
+createEmployee();
 // type list of options to call for team members
 
 // build team () =>
@@ -98,5 +175,8 @@ function buildTeam() {
     if (!fs.existsSync(OUTPUT_DIR)) {
         fs.mkdir(OUTPUT_DIR)
     }
+    console.log("Generating html...");
     fs.writeFileSync(OUTPUT_DIR), render(teamMenbers, "utf-8")
+    console.log("Successfully generated team.html")
 }
+buildTeam();
