@@ -70,7 +70,6 @@ function createManager() {
     //     const e = new Manager("Foo", 1, "test@test.com", testValue);
     //     expect(e.getOfficeNumber()).toBe(testValue);
     //   });
-    createManager();
 }
 
 // .then(answers => {
