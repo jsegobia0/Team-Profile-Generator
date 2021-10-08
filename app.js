@@ -169,10 +169,10 @@ function createEmployee() {
 function buildTeam() {
     // create the output directory if the output path is not existing
     if (!fs.existsSync(OUTPUT_DIR)) {
-        fs.mkdir(OUTPUT_DIR);
+        fs.mkdirSync(OUTPUT_DIR);
     }
     console.log("Generating html...");
-    fs.writeFileSync(OUTPUT_DIR), render(teamMembers, "utf-8")
+    fs.writeFileSync(outputPath, render(teamMembers), "utf-8")
     console.log("Successfully generated team.html");
 };
 
