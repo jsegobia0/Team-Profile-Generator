@@ -166,10 +166,13 @@ function createEmployee() {
 // type list of options to call for team members
 
 // build team () =>
-function writeToFile() {
+function buildTeam() {
     // create the output directory if the output path is not existing
+    if (!fs.existsSync(OUTPUT_DIR)) {
+        fs.mkdir(OUTPUT_DIR);
+    }
     console.log("Generating html...");
-    fs.writeFile('./dist/index.html'), render(teamMembers,  "utf-8")
+    fs.writeFileSync(OUTPUT_DIR), render(teamMembers, "utf-8")
     console.log("Successfully generated team.html");
 };
 
@@ -178,12 +181,7 @@ createManager()
   .then(createEngineer)
   .then(createEmployee)
   .then(createIntern)
-  .then(teamMembers => {
-      return render(teamMembers);
-  })
-  .then(html => {
-      return writeToFile(html);
-  })
+  .then(buildTeam)
   .catch(err => {
       console.log(err);
   });
