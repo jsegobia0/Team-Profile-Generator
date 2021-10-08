@@ -167,11 +167,16 @@ function createEmployee() {
 
 // build team () =>
 function buildTeam() {
-    // create the output directory if the output path is not existing
-    if (!fs.existsSync(OUTPUT_DIR)) {
-        fs.mkdir(OUTPUT_DIR)
-    }
-
+    fs.writeFile('./dist/index.html', data, err => {
+        // if there is an error 
+        if (err) {
+            console.log(err);
+            return;
+        // when the profile has been created 
+        } else {
+            console.log("Your team profile has been successfully created! Please check out the index.html")
+        }
+    })
     console.log("Generating html...");
     fs.writeFileSync(outputPath), render(teamMembers, "utf-8")
     console.log("Successfully generated team.html")
