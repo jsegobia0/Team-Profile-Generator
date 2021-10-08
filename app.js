@@ -145,22 +145,7 @@ function createEmployee() {
             name: "role",
             message: "Choose another role...",
             choices: ['Engineer', 'Intern']
-        },
-        {
-            type: "input",
-            name: "name",
-            message: "What is the employee's name?"
-        },
-        {
-            type: "input",
-            name: "email",
-            message: "What is the employee's email?"
-        },
-        {
-            type: "input",
-            name: "id",
-            message: "What is the employee's ID?"
-        },
+        }
     ])
 };
 // type list of options to call for team members
@@ -181,6 +166,7 @@ createManager()
   .then(createEngineer)
   .then(createEmployee)
   .then(createIntern)
+  .then(render(teamMembers))
   .then(buildTeam)
   .catch(err => {
       console.log(err);
