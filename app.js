@@ -11,7 +11,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-const teamMenbers = [];
+const teamMembers = [];
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
@@ -65,7 +65,6 @@ function createManager() {
         console.log("Adding member to Team...");
     })
 };
-createManager();
 
 // .then(answers => {
     // const manager = new Manager (answers.managerName,  ...)
@@ -102,7 +101,6 @@ function createEngineer() {
         console.log("Adding member to Team...");
     })
 };
-createEngineer();
 
 function createIntern() {
     return inquirer.prompt([
@@ -133,7 +131,6 @@ function createIntern() {
         console.log("Adding member to Team...");
     })
 };
-createIntern();
 
 function createEmployee() {
     return inquirer.prompt([
@@ -166,7 +163,6 @@ function createEmployee() {
         },
     ])
 };
-createEmployee();
 // type list of options to call for team members
 
 // build team () =>
@@ -175,8 +171,17 @@ function buildTeam() {
     if (!fs.existsSync(OUTPUT_DIR)) {
         fs.mkdir(OUTPUT_DIR)
     }
+
     console.log("Generating html...");
-    fs.writeFileSync(outputPath), render(teamMenbers, "utf-8")
+    fs.writeFileSync(outputPath), render(teamMembers, "utf-8")
     console.log("Successfully generated team.html")
 };
-buildTeam();
+
+createManager()
+  .then(createEmployee)
+  .then(createEngineer)
+  .then(createEmployee)
+  .then(createIntern)
+  .catch(err => {
+      console.log(err);
+  });
