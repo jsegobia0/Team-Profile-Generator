@@ -168,7 +168,7 @@ function createEmployee() {
 // build team () =>
 function buildTeam() {
     console.log("Generating html...");
-    fs.writeFile('./dist/index.html', render(teamMembers, "utf-8"))
+    fs.writeFile(`./dist/index.html`, render(teamMembers, "utf-8"))
     console.log("Successfully generated team.html")
 };
 
